@@ -386,6 +386,45 @@
       padding: 20px;
     }
 
+    .stay-gallery {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .stay-photo {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(34, 31, 26, 0.06);
+    }
+
+    .stay-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--soft);
+    }
+
+    .stay-photo.feature img {
+      aspect-ratio: 16 / 13;
+    }
+
+    .stay-photo figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .stay-stack {
+      display: grid;
+      gap: 16px;
+    }
+
     footer {
       padding: 28px 20px 42px;
       color: var(--muted);
@@ -406,6 +445,7 @@
       .summary-grid,
       .spot-grid,
       .notes,
+      .stay-gallery,
       .map-layout {
         grid-template-columns: 1fr;
       }
@@ -640,18 +680,34 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2>宿泊</h2>
-            <p class="sub">8月21日の夜は、伊勢から鳥羽へ移動してエクシブ鳥羽別邸に宿泊。翌朝の8月22日は、余裕を持って出発できるようにします。</p>
+            <h2>エクシブ鳥羽別邸</h2>
+            <p class="sub">8月21日の夜は、伊勢から鳥羽へ移動して和モダンな別邸ステイへ。庭園、静かな館内、部屋時間まで楽しむ宿泊パートです。</p>
+          </div>
+        </div>
+        <div class="stay-gallery">
+          <figure class="stay-photo feature">
+            <img src="assets/images/xiv-toba-exterior.jpeg" alt="エクシブ鳥羽別邸の外観">
+            <figcaption>池越しに見る別邸の外観</figcaption>
+          </figure>
+          <div class="stay-stack">
+            <figure class="stay-photo">
+              <img src="assets/images/xiv-toba-courtyard.jpeg" alt="エクシブ鳥羽別邸の中庭">
+              <figcaption>水面と庭石がきれいな中庭</figcaption>
+            </figure>
+            <figure class="stay-photo">
+              <img src="assets/images/xiv-room.jpeg" alt="エクシブ鳥羽別邸の客室">
+              <figcaption>ゆっくり過ごせる和モダンな室内</figcaption>
+            </figure>
           </div>
         </div>
         <div class="notes">
           <article class="note">
-            <h3>8/21 夜</h3>
+            <h3>8/21 夜の過ごし方</h3>
             <p>ぎょうざの美鈴本店で夕食後、荷物とお土産を整理して鳥羽へ。到着後はチェックイン、温泉、部屋時間を優先します。</p>
           </article>
           <article class="note">
-            <h3>8/22 朝</h3>
-            <p>朝は移動を詰め込みすぎず、朝食と身支度に余裕を持たせます。前日の写真や買ったものを見返す時間もここで確保します。</p>
+            <h3>8/22 朝の余白</h3>
+            <p>朝は移動を詰め込みすぎず、朝食と身支度に余裕を持たせます。中庭を眺めたり、前日の写真を見返す時間もここで確保します。</p>
           </article>
         </div>
       </div>
