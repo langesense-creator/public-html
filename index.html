@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>曽野舜太 聖地巡礼 伊勢家族プラン</title>
+  <meta name="description" content="M!LK 曽野舜太さんゆかりの伊勢スポットを家族4人で巡る、11:00-19:30のプレゼン風旅行プラン。">
+  <style>
+    :root {
+      --ink: #221f1a;
+      --muted: #665f55;
+      --paper: #fffaf0;
+      --soft: #f4ead9;
+      --line: #dfcfba;
+      --green: #1f6b55;
+      --red: #b5362d;
+      --gold: #c08a2c;
+      --blue: #285c88;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(34, 31, 26, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, system-ui, sans-serif;
+      line-height: 1.75;
+      background: var(--paper);
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px clamp(16px, 4vw, 54px);
+      background: rgba(255, 250, 240, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      font-weight: 900;
+      color: var(--red);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      text-decoration: none;
+      padding: 5px 0;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: end;
+      padding: 96px 20px 58px;
+      color: var(--white);
+      background:
+        linear-gradient(180deg, rgba(20, 28, 25, 0.22), rgba(20, 28, 25, 0.76)),
+        url("https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1800&q=82") center/cover;
+    }
+
+    .hero-inner {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 4px 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffe9b1;
+      border: 1px solid rgba(255, 233, 177, 0.72);
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(34px, 7vw, 76px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 820px;
+      margin: 20px 0 24px;
+      font-size: clamp(16px, 2.4vw, 22px);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-weight: 800;
+      text-decoration: none;
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .button.secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.68);
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    main section {
+      padding: 58px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 42px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .sub {
+      max-width: 650px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .summary-grid,
+    .spot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .tile,
+    .spot,
+    .note,
+    .route-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(34, 31, 26, 0.06);
+    }
+
+    .tile {
+      padding: 20px;
+    }
+
+    .tile strong {
+      display: block;
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1.25;
+      margin-bottom: 5px;
+    }
+
+    .tile span,
+    .spot p,
+    .note p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stop {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 18px;
+      padding: 18px;
+      background: var(--white);
+      border-left: 6px solid var(--green);
+      border-radius: 8px;
+      box-shadow: 0 8px 22px rgba(34, 31, 26, 0.07);
+    }
+
+    .time {
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    .stop h3,
+    .spot h3,
+    .note h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .stop p,
+    .spot p,
+    .note p {
+      margin: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--blue);
+      background: #eaf3f8;
+    }
+
+    .spot {
+      overflow: hidden;
+    }
+
+    .spot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--soft);
+    }
+
+    .spot-body {
+      padding: 18px;
+    }
+
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .map-frame {
+      min-height: 430px;
+      border: 0;
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: var(--shadow);
+    }
+
+    .route-panel {
+      padding: 20px;
+    }
+
+    .route-list {
+      margin: 12px 0 18px;
+      padding-left: 20px;
+    }
+
+    .route-list li + li {
+      margin-top: 8px;
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .note {
+      padding: 20px;
+    }
+
+    footer {
+      padding: 28px 20px 42px;
+      color: var(--muted);
+      text-align: center;
+      background: var(--soft);
+    }
+
+    @media (max-width: 860px) {
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .summary-grid,
+      .spot-grid,
+      .notes,
+      .map-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .stop {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 82vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">曽野舜太 伊勢巡礼</a>
+    <nav class="nav" aria-label="ページ内メニュー">
+      <a href="#overview">概要</a>
+      <a href="#timeline">タイムライン</a>
+      <a href="#spots">聖地スポット</a>
+      <a href="#map">地図</a>
+      <a href="#tips">注意点</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">11:00-19:30 / 車あり / 家族4人</p>
+        <h1>M!LK 曽野舜太さんゆかりの伊勢を、家族で一日めぐる。</h1>
+        <p class="lead">喫茶モリ、河崎、内宮、おはらい町、猿田彦神社、美鈴本店をゆったり回る、食べ歩きと参拝のプレゼン風プランです。</p>
+        <div class="hero-actions">
+          <a class="button" href="https://www.google.com/maps/dir/?api=1&origin=%E5%96%AB%E8%8C%B6%E3%83%A2%E3%83%AA%2C%20%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BC%8A%E5%8B%A2%E5%B8%82&destination=%E3%81%8E%E3%82%87%E3%81%86%E3%81%96%E3%81%AE%E7%BE%8E%E9%88%B4%20%E6%9C%AC%E5%BA%97%2C%20%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BC%8A%E5%8B%A2%E5%B8%82&waypoints=%E8%8B%A5%E6%9D%BE%E5%B1%8B%E6%9C%AC%E5%BA%97%2C%20%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BC%8A%E5%8B%A2%E5%B8%82%7C%E4%BC%8A%E5%8B%A2%E7%A5%9E%E5%AE%AE%20%E5%86%85%E5%AE%AE%7C%E7%8C%BF%E7%94%B0%E5%BD%A6%E7%A5%9E%E7%A4%BE&travelmode=driving" target="_blank" rel="noopener">Googleマップで全ルートを開く</a>
+          <a class="button secondary" href="#timeline">予定を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>この日の組み方</h2>
+            <p class="sub">聖地感を出しつつ、子どもたちが「神社ばかり」と感じにくいよう、食事・街歩き・参拝を交互に入れています。</p>
+          </div>
+        </div>
+        <div class="summary-grid">
+          <article class="tile">
+            <strong>最優先</strong>
+            <span>高校時代ゆかりとして知られる喫茶モリで、モリスパとバナナジュースからスタート。</span>
+          </article>
+          <article class="tile">
+            <strong>家族向き</strong>
+            <span>河崎で軽く食べ歩き、おはらい町で買い物、内宮で参拝。写真を撮る時間も確保。</span>
+          </article>
+          <article class="tile">
+            <strong>夜の締め</strong>
+            <span>本店の手作り餃子で夕食。提供に時間がかかっても大丈夫なよう、最後に余裕時間を残します。</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>タイムライン</h2>
+            <p class="sub">伊勢に11:00到着、19:30出発想定。週末や夏休みは内宮周辺の駐車待ちを見て、河崎を少し短縮すると安定します。</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="stop">
+            <div class="time">11:00-12:10</div>
+            <div>
+              <h3>喫茶モリで昼食</h3>
+              <p>モリスパ、チーズ、バナナジュースを中心に。4人なら少し分けながら、この後の食べ歩きに余白を残します。</p>
+              <div class="tags"><span class="tag">最重要スポット</span><span class="tag">昼食</span></div>
+            </div>
+          </article>
+          <article class="stop">
+            <div class="time">12:20-13:10</div>
+            <div>
+              <h3>若松屋本店と河崎散策</h3>
+              <p>伊勢ひりょうず、紅生姜系のはんぺい、チーズ棒を少しずつ。古い町家が残る河崎で写真休憩も。</p>
+              <div class="tags"><span class="tag">地元ロケ</span><span class="tag">食べ歩き</span></div>
+            </div>
+          </article>
+          <article class="stop">
+            <div class="time">13:35-16:30</div>
+            <div>
+              <h3>おはらい町・おかげ横丁・内宮</h3>
+              <p>先に少し散策し、14:25ごろから内宮参拝。帰りに赤福、伊勢茶、お土産を回すと閉店前に動きやすいです。</p>
+              <div class="tags"><span class="tag">王道観光</span><span class="tag">参拝</span><span class="tag">買い物</span></div>
+            </div>
+          </article>
+          <article class="stop">
+            <div class="time">16:40-17:15</div>
+            <div>
+              <h3>猿田彦神社</h3>
+              <p>内宮から近く、短時間で回れる道ひらきの神社。進路やこれからの成長を願う家族旅行の流れにも合います。</p>
+              <div class="tags"><span class="tag">ロケ地候補</span><span class="tag">短時間</span></div>
+            </div>
+          </article>
+          <article class="stop">
+            <div class="time">17:35-19:00</div>
+            <div>
+              <h3>ぎょうざの美鈴本店で夕食</h3>
+              <p>餃子4人前から始めて、おにぎり、からあげ、カニクリームコロッケ、おでんを追加。手作り工程を見るのも楽しい店です。</p>
+              <div class="tags"><span class="tag">夕食</span><span class="tag">名物餃子</span></div>
+            </div>
+          </article>
+          <article class="stop">
+            <div class="time">19:00-19:30</div>
+            <div>
+              <h3>余裕時間・帰路へ</h3>
+              <p>提供待ち、渋滞、トイレ、お土産整理に使えるクッション。予定どおりなら高柳商店街を短く見てもOK。</p>
+              <div class="tags"><span class="tag">調整枠</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="spots">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>聖地スポット</h2>
+            <p class="sub">今回のルートで家族に説明しやすいポイントを、行く順番にまとめました。</p>
+          </div>
+        </div>
+        <div class="spot-grid">
+          <article class="spot">
+            <img src="https://images.unsplash.com/photo-1551326844-4df70f78d0e9?auto=format&fit=crop&w=900&q=80" alt="喫茶店の食事イメージ">
+            <div class="spot-body">
+              <h3>喫茶モリ</h3>
+              <p>曽野さんの高校時代ゆかりとして知られる伊勢の喫茶店。鉄板スパゲティのモリスパを主役に。</p>
+            </div>
+          </article>
+          <article class="spot">
+            <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?auto=format&fit=crop&w=900&q=80" alt="古い町並みのイメージ">
+            <div class="spot-body">
+              <h3>若松屋本店・河崎</h3>
+              <p>河崎の老舗で食べ歩き。町家や蔵の残るエリアなので、家族写真にも向いています。</p>
+            </div>
+          </article>
+          <article class="spot">
+            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=900&q=80" alt="神社参道のイメージ">
+            <div class="spot-body">
+              <h3>内宮・おはらい町</h3>
+              <p>伊勢らしさの中心。参拝だけでなく赤福、伊勢茶、お土産をセットにすると家族全員が楽しみやすいです。</p>
+            </div>
+          </article>
+          <article class="spot">
+            <img src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?auto=format&fit=crop&w=900&q=80" alt="朱色の神社建築のイメージ">
+            <div class="spot-body">
+              <h3>猿田彦神社</h3>
+              <p>内宮近くで短く寄れるスポット。道ひらきの意味づけがあり、旅程の後半に入れやすい場所です。</p>
+            </div>
+          </article>
+          <article class="spot">
+            <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=900&q=80" alt="餃子のイメージ">
+            <div class="spot-body">
+              <h3>ぎょうざの美鈴本店</h3>
+              <p>手作り餃子の名店。餃子だけでなく、おにぎりや一品料理も合わせると家族向けの夕食になります。</p>
+            </div>
+          </article>
+          <article class="spot">
+            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=900&q=80" alt="日本の街歩きイメージ">
+            <div class="spot-body">
+              <h3>今回は外した候補</h3>
+              <p>キッチンクック、Cafeわっく、カンパーニュは魅力的ですが、食事量と時間が重なるため別日向きです。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="map">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>ルート地図</h2>
+            <p class="sub">地図は伊勢市中心部から内宮方面までを表示しています。正確な経路は上のGoogleマップボタンから開いてください。</p>
+          </div>
+        </div>
+        <div class="map-layout">
+          <iframe class="map-frame" title="伊勢市周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%E4%BC%8A%E5%8B%A2%E5%B8%82%20%E5%86%85%E5%AE%AE%20%E6%B2%B3%E5%B4%8E%20%E7%8C%BF%E7%94%B0%E5%BD%A6%E7%A5%9E%E7%A4%BE%20%E7%BE%8E%E9%88%B4%E6%9C%AC%E5%BA%97&output=embed"></iframe>
+          <aside class="route-panel">
+            <h3>運転ルート</h3>
+            <ol class="route-list">
+              <li>喫茶モリ</li>
+              <li>若松屋本店・河崎</li>
+              <li>市営内宮B駐車場方面</li>
+              <li>おはらい町・内宮</li>
+              <li>猿田彦神社</li>
+              <li>ぎょうざの美鈴本店</li>
+            </ol>
+            <a class="button" href="https://www.google.com/maps/dir/?api=1&origin=%E5%96%AB%E8%8C%B6%E3%83%A2%E3%83%AA%2C%20%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BC%8A%E5%8B%A2%E5%B8%82&destination=%E3%81%8E%E3%82%87%E3%81%86%E3%81%96%E3%81%AE%E7%BE%8E%E9%88%B4%20%E6%9C%AC%E5%BA%97%2C%20%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BC%8A%E5%8B%A2%E5%B8%82&waypoints=%E8%8B%A5%E6%9D%BE%E5%B1%8B%E6%9C%AC%E5%BA%97%2C%20%E4%B8%89%E9%87%8D%E7%9C%8C%E4%BC%8A%E5%8B%A2%E5%B8%82%7C%E4%BC%8A%E5%8B%A2%E7%A5%9E%E5%AE%AE%20%E5%86%85%E5%AE%AE%7C%E7%8C%BF%E7%94%B0%E5%BD%A6%E7%A5%9E%E7%A4%BE&travelmode=driving" target="_blank" rel="noopener">ルートを開く</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>当日の注意点</h2>
+            <p class="sub">お店の営業時間・定休日は変わることがあるので、出発前に公式情報を確認してください。</p>
+          </div>
+        </div>
+        <div class="notes">
+          <article class="note">
+            <h3>駐車場</h3>
+            <p>内宮周辺は混む日はA駐車場にこだわらず、市営内宮B駐車場方面へ回ると動きやすいです。</p>
+          </article>
+          <article class="note">
+            <h3>食べすぎ対策</h3>
+            <p>昼にモリ、午後に若松屋、夜に美鈴が入るため、昼食は全員が満腹まで食べ切らないのがコツです。</p>
+          </article>
+          <article class="note">
+            <h3>暑さ・雨</h3>
+            <p>夏は内宮の参拝で体力を使います。雨なら河崎散策を短くして、おはらい町や食事時間を長めに。</p>
+          </article>
+          <article class="note">
+            <h3>代替候補</h3>
+            <p>喫茶モリが休みならキッチンクック、夕食を軽くしたい日は美鈴を駅裏店や別日に回す選択もあります。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>曽野舜太さんゆかりの伊勢スポットを家族で楽しむための共有用ページです。</p>
+  </footer>
+</body>
+</html>
