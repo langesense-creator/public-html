@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>曽野舜太 聖地巡礼 伊勢家族プラン</title>
   <meta name="description" content="M!LK 曽野舜太さんゆかりの伊勢スポットを家族4人で巡る、11:00-19:30のプレゼン風旅行プラン。">
   <style>
@@ -33,6 +34,72 @@
     }
 
     a { color: inherit; }
+
+    body.locked {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    body.locked #site-content {
+      display: none;
+    }
+
+    .password-gate {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255, 250, 240, 0.86), rgba(244, 234, 217, 0.96)),
+        url("assets/images/hero-naiku.jpeg") center/cover;
+    }
+
+    body:not(.locked) .password-gate {
+      display: none;
+    }
+
+    .password-panel {
+      width: min(380px, 100%);
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .password-panel h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .password-panel p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .password-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .password-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    .password-error {
+      min-height: 22px;
+      margin: 0;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 800;
+    }
 
     .site-header {
       position: sticky;
@@ -349,7 +416,20 @@
     }
   </style>
 </head>
-<body>
+<body class="locked">
+  <section class="password-gate" aria-label="Password required">
+    <div class="password-panel">
+      <h1>Private Page</h1>
+      <p>パスワードを入力してください。</p>
+      <form class="password-form" id="password-form">
+        <input class="password-input" id="password-input" type="password" inputmode="numeric" autocomplete="current-password" aria-label="Password">
+        <button class="button" type="submit">開く</button>
+        <p class="password-error" id="password-error" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <div id="site-content">
   <header class="site-header">
     <a class="brand" href="#top">曽野舜太 伊勢巡礼</a>
     <nav class="nav" aria-label="ページ内メニュー">
@@ -574,5 +654,36 @@
   <footer>
     <p>曽野舜太さんゆかりの伊勢スポットを家族で楽しむための共有用ページです。</p>
   </footer>
+  </div>
+  <script>
+    const allowedPassword = "1073";
+    const unlockedKey = "iseTripUnlocked";
+    const form = document.getElementById("password-form");
+    const input = document.getElementById("password-input");
+    const error = document.getElementById("password-error");
+
+    function unlock() {
+      document.body.classList.remove("locked");
+      sessionStorage.setItem(unlockedKey, "true");
+    }
+
+    if (sessionStorage.getItem(unlockedKey) === "true") {
+      unlock();
+    } else {
+      input.focus();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (input.value === allowedPassword) {
+        unlock();
+        return;
+      }
+
+      error.textContent = "パスワードが違います。";
+      input.value = "";
+      input.focus();
+    });
+  </script>
 </body>
 </html>
